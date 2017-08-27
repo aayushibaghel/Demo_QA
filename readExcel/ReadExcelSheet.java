@@ -3,6 +3,7 @@ package readExcel;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -11,25 +12,37 @@ public class ReadExcelSheet {
 	
 	XSSFWorkbook wb;
 	XSSFSheet sheet1;
-	public String ReadExcel(int sheetnum, int row,int col)
+
+	
+	public  ReadExcelSheet(String excelPath)
 	{
-	
-	File src= new File("C:\\Aayushi\\Selenium\\ExcelData\\TestData1.xlsx");
-	
-	try {
-		FileInputStream fis= new FileInputStream(src);
-		XSSFWorkbook wb= new XSSFWorkbook(fis);
-	} catch (Exception e) {
 		
-		System.out.println(e.getMessage());
+		try {
+			File src= new File(excelPath);
+			
+			FileInputStream fis= new FileInputStream(src);
+			
+			wb= new XSSFWorkbook(fis);
+		
+		} catch (Exception e) {
+
+			System.out.println(e.getMessage());
+		}
+		
+			}
+	
+	
+	public String getData(int sheetnumber, int row, int col)
+
+	{
+		sheet1=wb.getSheetAt(sheetnumber);
+		String data= sheet1.getRow(row).getCell(col).getStringCellValue();
+		return data;
 	}
-	XSSFSheet sheet1= wb.getSheetAt(sheetnum);
-	String td= sheet1.getRow(row).getCell(col).getStringCellValue();
-	
-	return td;
 	
 	
-	}
+	
+	
 	
 	
 	

@@ -9,14 +9,20 @@ import registration.ClickOnRegistration;
 
 public class RegistrationLink {
 	
-	@Test
+	@Test(priority=1)
 	public void Register()
 	{
 		ClickOnRegistration click= new ClickOnRegistration();
 		click.ClickRegistration();
 		
+		
+		
 	}
-	
+//	@Test(priority=2)
+//	public void invalidLogin()
+//	{
+//		
+//	}
 	
 	
 	
