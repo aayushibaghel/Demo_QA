@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -36,7 +37,8 @@ public class ReadExcelSheet {
 
 	{
 		sheet1=wb.getSheetAt(sheetnumber);
-		String data= sheet1.getRow(row).getCell(col).getStringCellValue();
+		DataFormatter formatter = new DataFormatter();
+		String data=  formatter.formatCellValue(sheet1.getRow(row).getCell(col));
 		return data;
 	}
 	
